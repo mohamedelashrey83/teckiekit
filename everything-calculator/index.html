@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Everything Calculator</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./assets/styles.css" />
+	<script src="https://cdn.jsdelivr.net/npm/mathjs@11.11.0/lib/browser/math.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/nerdamer.core.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Algebra.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Calculus.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Solve.js"></script>
+	<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+	<header class="app-header">
+		<h1>Everything Calculator</h1>
+		<input id="global-input" class="global-input" type="text" placeholder="Type expression, e.g. 2*sin(pi/4) + 3^2, solve x^2-4=0, derivative d/dx x^3, integral ∫x^2 dx, unit 5 cm to inch" />
+	</header>
+
+	<main class="layout">
+		<section class="panel" aria-labelledby="basic-calc-title">
+			<h2 id="basic-calc-title">Basic</h2>
+			<div class="grid keys" id="basic-keys"></div>
+			<div class="display">
+				<input id="basic-display" class="display-input" type="text" readonly />
+			</div>
+		</section>
+
+		<section class="panel" aria-labelledby="scientific-calc-title">
+			<h2 id="scientific-calc-title">Scientific</h2>
+			<div class="grid keys" id="sci-keys"></div>
+		</section>
+
+		<section class="panel" aria-labelledby="algebra-title">
+			<h2 id="algebra-title">Algebra & Calculus</h2>
+			<div class="algebra-controls">
+				<input id="algebra-input" type="text" placeholder="e.g. solve x^2-5x+6=0, factor x^3-1, diff x^3, int x^2" />
+				<button id="algebra-run">Run</button>
+			</div>
+			<pre id="algebra-output" class="output"></pre>
+		</section>
+
+		<section class="panel" aria-labelledby="unit-title">
+			<h2 id="unit-title">Units & Conversions</h2>
+			<div class="unit-controls">
+				<input id="unit-input" type="text" placeholder="e.g. 5 cm to inch, 32 F to C, 1e3 ms to s" />
+				<button id="unit-run">Convert</button>
+			</div>
+			<pre id="unit-output" class="output"></pre>
+		</section>
+
+		<section class="panel" aria-labelledby="stat-title">
+			<h2 id="stat-title">Statistics</h2>
+			<div class="stat-controls">
+				<textarea id="stat-input" rows="3" placeholder="Comma/space numbers e.g. 1,2,2,3,4"></textarea>
+				<div class="stat-actions">
+					<button data-stat="mean">Mean</button>
+					<button data-stat="median">Median</button>
+					<button data-stat="mode">Mode</button>
+					<button data-stat="std">Std Dev</button>
+					<button data-stat="var">Variance</button>
+				</div>
+			</div>
+			<pre id="stat-output" class="output"></pre>
+		</section>
+
+		<section class="panel" aria-labelledby="plot-title">
+			<h2 id="plot-title">Plotter</h2>
+			<div class="plot-controls">
+				<input id="plot-fx" type="text" placeholder="f(x) = sin(x)" />
+				<input id="plot-range" type="text" placeholder="Range: -6.28,6.28" />
+				<button id="plot-run">Plot</button>
+			</div>
+			<div id="plot" class="plot"></div>
+		</section>
+	</main>
+
+	<footer class="app-footer">
+		<span>Powered by math.js, nerdamer, and Plotly</span>
+	</footer>
+
+	<script src="./assets/app.js"></script>
+</body>
+</html>
